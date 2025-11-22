@@ -1,6 +1,7 @@
 @layer theme, base, components, utilities;
 @import "tailwindcss/theme.css" layer(theme) important;
 @import "tailwindcss/utilities.css" layer(utilities) important;
+
 @layer base {
   body {
     @apply mx-0 my-0;

@@ -19,7 +19,7 @@ export default function App() {
   return (
     <div
       ref={homeRef}
-      className="relative min-w-[1920px] overflow-x-hidden flex flex-col gap-2 pb-18"
+      className="relative min-w-[1368px] overflow-x-hidden flex flex-col gap-2 pb-18"
     >
       <div
         onClick={() => {
@@ -80,14 +80,14 @@ export default function App() {
         </div>
       </div>
 
-      <div className="flex flex-row pb-2 mt-56">
-        <div className="ml-96 mt-8 w-96 h-96 shadow-sm shadow-black  rounded-md overflow-hidden">
+      <div className="flex flex-row pb-2 mt-56 justify-center">
+        <div className="mt-8 w-96 h-96 shadow-sm shadow-black  rounded-md overflow-hidden">
           <img
             className="h-full w-full"
             src="https://cdn.hstatic.net/products/200000462939/10006_1c37674a6c3f4687b65cd9a2fb5c53b5_master.jpg"
           ></img>
         </div>
-        <div className="flex flex-col ml-16">
+        <div className="flex flex-col pl-16">
           <div className="font-semibold  text-[48px] drop-shadow-md drop-shadow-gray-400">
             About <span className="text-[#1B7CF0]">me</span>
           </div>
@@ -163,7 +163,7 @@ export default function App() {
         <div className="text-[48px] font-semibold">
           Featured <span className="text-[#1B7CF0]">Projects</span>
         </div>
-        <div className="w-[90%] flex flex-row mt-8 gap-12 pb-2">
+        <div className="max-w-[90%] flex flex-row mt-8 gap-12 pb-2 mx-auto">
           <ProjectCard
             img=""
             name="QuizCit"
@@ -194,10 +194,10 @@ export default function App() {
         </div>
         <div className="w-[80%] bg-white mx-auto h-120 shadow-sm shadow-black rounded-lg flex flex-row">
           <div className="w-[40%] flex flex-col gap-8">
-            <div className="font-semibold text-[36px] mt-16 ml-16">
+            <div className="font-semibold text-[36px] mt-16 pl-16">
               Get In Touch
             </div>
-            <div className="ml-8 flex flex-row items-center">
+            <div className="pl-8 flex flex-row items-center">
               <MailIcon className="text-[32px] bg-[#1B7CF0] text-[white] p-2 rounded-md mt-4 mx-4"></MailIcon>
               <div className="mt-2 text-[18px]">
                 Email
@@ -205,7 +205,7 @@ export default function App() {
                 <span className="font-thin">nhhun2005@gmail.com</span>
               </div>
             </div>
-            <div className="ml-8 flex flex-row items-center">
+            <div className="pl-8 flex flex-row items-center">
               <PhoneIcon className="text-[32px] bg-[#1B7CF0] text-[white] p-2 rounded-md mt-4 mx-4"></PhoneIcon>
               <div className="mt-2 text-[18px]">
                 Phone
