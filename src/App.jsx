@@ -163,7 +163,7 @@ export default function App() {
         <div className="text-[48px] font-semibold">
           Featured <span className="text-[#1B7CF0]">Projects</span>
         </div>
-        <div className="flex flex-row mt-8 gap-12 pb-2">
+        <div className="w-[90%] flex flex-row mt-8 gap-12 pb-2">
           <ProjectCard
             img=""
             name="QuizCit"
