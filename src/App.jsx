@@ -255,7 +255,7 @@ export function ProjectCard({ img, name, desc, code, demo }) {
           href={code}
           target="_blank"
           rel="noreferrer"
-          className="bg-[#1B7CF0] w-40 h-12 flex justify-center items-center text-white rounded-md shadow-black select-none shadow-md
+          className="no-underline bg-[#1B7CF0] w-40 h-12 flex justify-center items-center text-white rounded-md shadow-black select-none shadow-md
         hover:scale-105 transition-all hover:cursor-pointer"
         >
           Code
@@ -264,7 +264,7 @@ export function ProjectCard({ img, name, desc, code, demo }) {
           href={demo}
           target="_blank"
           rel="noreferrer"
-          className="text-[#1B7CF0] w-40 h-12 flex justify-center items-center bg-white rounded-md shadow-black select-none shadow-md
+          className="no-underline text-[#1B7CF0] w-40 h-12 flex justify-center items-center bg-white rounded-md shadow-black select-none shadow-md
         hover:scale-105 transition-all hover:cursor-pointer"
         >
           Demo
