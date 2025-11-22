@@ -163,7 +163,63 @@ export default function App() {
         <div className="text-[48px] font-semibold">
           Featured <span className="text-[#1B7CF0]">Projects</span>
         </div>
-        <div className="max-w-[90%] flex flex-row mt-8 gap-12 pb-2 mx-auto">
+        <div className="relative w-[95%] flex flex-row mt-8 gap-12 pb-2 mx-auto overflow-x-scroll px-12">
+          <ProjectCard
+            img=""
+            name="QuizCit"
+            desc="Provide online quizzes and forum for students"
+            code="https://github.com/kongfa155/NoSQLProject"
+            demo="https://www.quiz.id.vn/"
+          ></ProjectCard>
+          <ProjectCard
+            img=""
+            name="QuizCit"
+            desc="Provide online quizzes and forum for students"
+            code="https://github.com/kongfa155/NoSQLProject"
+            demo="https://www.quiz.id.vn/"
+          ></ProjectCard>
+          <ProjectCard
+            img=""
+            name="QuizCit"
+            desc="Provide online quizzes and forum for students"
+            code="https://github.com/kongfa155/NoSQLProject"
+            demo="https://www.quiz.id.vn/"
+          ></ProjectCard>
+          <ProjectCard
+            img=""
+            name="QuizCit"
+            desc="Provide online quizzes and forum for students"
+            code="https://github.com/kongfa155/NoSQLProject"
+            demo="https://www.quiz.id.vn/"
+          ></ProjectCard>
+          <ProjectCard
+            img=""
+            name="QuizCit"
+            desc="Provide online quizzes and forum for students"
+            code="https://github.com/kongfa155/NoSQLProject"
+            demo="https://www.quiz.id.vn/"
+          ></ProjectCard>
+          <ProjectCard
+            img=""
+            name="QuizCit"
+            desc="Provide online quizzes and forum for students"
+            code="https://github.com/kongfa155/NoSQLProject"
+            demo="https://www.quiz.id.vn/"
+          ></ProjectCard>
+          <ProjectCard
+            img=""
+            name="QuizCit"
+            desc="Provide online quizzes and forum for students"
+            code="https://github.com/kongfa155/NoSQLProject"
+            demo="https://www.quiz.id.vn/"
+          ></ProjectCard>
+          <ProjectCard
+            img=""
+            name="QuizCit"
+            desc="Provide online quizzes and forum for students"
+            code="https://github.com/kongfa155/NoSQLProject"
+            demo="https://www.quiz.id.vn/"
+          ></ProjectCard>
           <ProjectCard
             img=""
             name="QuizCit"
@@ -239,7 +295,7 @@ export default function App() {
 
 export function ProjectCard({ img, name, desc, code, demo }) {
   return (
-    <div className="relative min-h-80 max-w-160 bg-white shadow-black shadow-md flex flex-col pb-32 rounded-md overflow-clip">
+    <div className="relative min-w-[500px] max-w-[30%] min-h-120 bg-white shadow-black shadow-md flex flex-col pb-32 rounded-md overflow-hidden">
       <img
         className="max-h-[50%]"
         src={
