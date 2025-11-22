@@ -1,26 +1,62 @@
 import wallpaper from "./assets/pagewallpaper.jpg";
+import { AnimatePresence, motion } from "motion/react";
 import { FaCode as FrontEndIcon } from "react-icons/fa";
 import { GrDatabase as DatabaseIcon } from "react-icons/gr";
 import { GrDeploy as DeployIcon } from "react-icons/gr";
 import { IoMail as MailIcon } from "react-icons/io5";
 import { FaPhoneAlt as PhoneIcon } from "react-icons/fa";
 import { FaLongArrowAltUp as UpIcon } from "react-icons/fa";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import "./index.css";
+import circle from "./assets/circle.svg";
 
 export default function App() {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const homeRef = useRef(null);
   const projectRef = useRef(null);
   const contactRef = useRef(null);
-
+  const [currentSection, setCurrentSection] = useState("");
+  const [hover, setHover] = useState(false);
+  const [showMouse, setShowMouse] = useState(true);
   const scrollTo = (ref) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
+  const transformOrigin = `${(mousePos.x / window.innerWidth) * 100}% ${
+    (mousePos.y / window.innerHeight) * 100
+  }%`;
+  useEffect(() => {
+    const handler = (e) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handler);
+    return () => window.removeEventListener("mousemove", handler);
+  }, []);
 
   return (
     <div
       ref={homeRef}
       className="relative min-w-[1368px] overflow-x-hidden flex flex-col gap-2 pb-18"
     >
+      <AnimatePresence>
+        {showMouse ? (
+          <motion.div
+            className={`fixed top-0 left-0 pointer-events-none z-40 w-16 h-16 bg-[#1B7CF0] rounded-full`}
+            animate={{
+              x: mousePos.x - 64 / 2,
+              y: mousePos.y - 64 / 2,
+              scale: hover ? 2 : 1,
+              opacity: hover ? 0.25 : 1,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 30,
+            }}
+            exit={{ opacity: 0 }}
+            initial={{ scale: 0 }}
+          ></motion.div>
+        ) : null}
+      </AnimatePresence>
       <div
         onClick={() => {
           scrollTo(homeRef);
@@ -34,7 +70,15 @@ export default function App() {
         className="opacity-20 fixed min-w-full select-none -z-999"
         draggable="false"
       />
-      <div className="mx-auto mt-16 w-100 h-25 bg-black opacity-66 flex flex-col rounded-xl shadow-black shadow-md">
+      <div
+        onMouseEnter={() => {
+          setHover(true);
+        }}
+        onMouseLeave={() => {
+          setHover(false);
+        }}
+        className="mx-auto mt-16 w-100 h-25 bg-black opacity-66 flex flex-col rounded-xl shadow-black shadow-md"
+      >
         <div className="text-white mt-6 mx-8 font-semibold">
           <span className="text-[#1B7CF0]">const</span> developer ={" "}
           <span className="text-[#1B7CF0]">{"{name: "}</span>'Nguyen Ha Huan'
@@ -47,7 +91,14 @@ export default function App() {
         </div>
       </div>
 
-      <div>
+      <div
+        onMouseEnter={() => {
+          setHover(true);
+        }}
+        onMouseLeave={() => {
+          setHover(false);
+        }}
+      >
         <div className="text-center font-semibold text-[48px] text-[#363636] drop-shadow-gray-400 drop-shadow-md">
           Full Stack Developer
         </div>
@@ -64,6 +115,14 @@ export default function App() {
           onClick={() => {
             scrollTo(projectRef);
           }}
+          onMouseEnter={() => {
+            setHover(true);
+            setShowMouse(false);
+          }}
+          onMouseLeave={() => {
+            setHover(false);
+            setShowMouse(true);
+          }}
           className="bg-[#1B7CF0] w-50 h-12 flex justify-center items-center text-white rounded-md shadow-black select-none shadow-md
         hover:scale-105 transition-all hover:cursor-pointer"
         >
@@ -72,6 +131,14 @@ export default function App() {
         <div
           onClick={() => {
             scrollTo(contactRef);
+          }}
+          onMouseEnter={() => {
+            setHover(true);
+            setShowMouse(false);
+          }}
+          onMouseLeave={() => {
+            setHover(false);
+            setShowMouse(true);
           }}
           className="text-[#1B7CF0] w-40 h-12 flex justify-center items-center bg-white rounded-md shadow-black select-none shadow-md
         hover:scale-105 transition-all hover:cursor-pointer"
@@ -87,7 +154,29 @@ export default function App() {
             src="https://cdn.hstatic.net/products/200000462939/10006_1c37674a6c3f4687b65cd9a2fb5c53b5_master.jpg"
           ></img>
         </div>
-        <div className="flex flex-col pl-16">
+        <motion.div
+          className="flex flex-col pl-16"
+          onMouseEnter={() => {
+            setHover(true);
+            setShowMouse(true);
+            setCurrentSection("aboutme");
+          }}
+          onMouseLeave={() => {
+            setHover(false);
+            setShowMouse(true);
+            setCurrentSection("");
+          }}
+          animate={{
+            scale: hover && currentSection == "aboutme" ? 1.05 : 1,
+          }}
+          style={{
+            transformOrigin: transformOrigin,
+          }}
+          transition={{
+            type: "tween",
+            duration: 0.2,
+          }}
+        >
           <div className="font-semibold  text-[48px] drop-shadow-md drop-shadow-gray-400">
             About <span className="text-[#1B7CF0]">me</span>
           </div>
@@ -116,10 +205,32 @@ export default function App() {
               <div className="p-2 px-8 ">Team Player</div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="mt-40 flex flex-col items-center  drop-shadow-md drop-shadow-gray-400">
+      <motion.div
+        onMouseEnter={() => {
+          setHover(true);
+          setShowMouse(true);
+          setCurrentSection("expertise");
+        }}
+        onMouseLeave={() => {
+          setHover(false);
+          setShowMouse(true);
+          setCurrentSection("");
+        }}
+        animate={{
+          scale: hover && currentSection == "expertise" ? 1.05 : 1,
+        }}
+        style={{
+          transformOrigin: transformOrigin,
+        }}
+        transition={{
+          type: "tween",
+          duration: 0.2,
+        }}
+        className="mt-40 flex flex-col items-center  drop-shadow-md drop-shadow-gray-400"
+      >
         <div className="text-[48px] font-semibold">
           Technical <span className="text-[#1B7CF0]">Expertise</span>
         </div>
@@ -154,7 +265,7 @@ export default function App() {
             </ul>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <div
         ref={projectRef}
@@ -163,7 +274,17 @@ export default function App() {
         <div className="text-[48px] font-semibold">
           Featured <span className="text-[#1B7CF0]">Projects</span>
         </div>
-        <div className="relative w-[95%] flex flex-row mt-8 gap-12 pb-2 mx-auto overflow-x-scroll px-12">
+        <div
+          onMouseEnter={() => {
+            setHover(true);
+            setShowMouse(false);
+          }}
+          onMouseLeave={() => {
+            setHover(false);
+            setShowMouse(true);
+          }}
+          className="relative w-[95%] flex flex-row mt-8 gap-12 pb-2 mx-auto overflow-x-scroll px-12"
+        >
           <ProjectCard
             img=""
             name="QuizCit"
@@ -244,7 +365,30 @@ export default function App() {
         </div>
       </div>
 
-      <div ref={contactRef} className="flex flex-col mt-40 pb-48 gap-12">
+      <motion.div
+        onMouseEnter={() => {
+          setHover(true);
+          setShowMouse(true);
+          setCurrentSection("contact");
+        }}
+        onMouseLeave={() => {
+          setHover(false);
+          setShowMouse(true);
+          setCurrentSection("");
+        }}
+        animate={{
+          scale: hover && currentSection == "contact" ? 1.05 : 1,
+        }}
+        style={{
+          transformOrigin: transformOrigin,
+        }}
+        transition={{
+          type: "tween",
+          duration: 0.2,
+        }}
+        ref={contactRef}
+        className="flex flex-col mt-40 pb-48 gap-12"
+      >
         <div className="text-[48px] font-semibold text-center">
           Contact <span className="text-[#1B7CF0]">Me</span>
         </div>
@@ -288,7 +432,7 @@ export default function App() {
             </a>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

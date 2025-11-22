@@ -8,3 +8,10 @@
     font-family: "K2D", sans-serif;
   }
 }
+
+.mask {
+  position: absolute;
+  mask-image: url("./assets/mask.svg");
+  background: #1b7cf0;
+  mask-repeat: no-repeat;
+}
