@@ -25,7 +25,7 @@ export default function App() {
         onClick={() => {
           scrollTo(homeRef);
         }}
-        className="fixed right-8 bottom-8 hover:scale-105 transition-all"
+        className="fixed right-8 bottom-8 hover:scale-105 transition-all z-999"
       >
         <UpIcon className="text-[32px] text-white bg-[#1B7CF0] p-4 rounded-full hover:cursor-pointer"></UpIcon>
       </div>
