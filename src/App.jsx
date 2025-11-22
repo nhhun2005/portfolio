@@ -19,7 +19,7 @@ export default function App() {
   return (
     <div
       ref={homeRef}
-      className="relative w-screen overflow-x-hidden flex flex-col gap-2 pb-18"
+      className="relative min-w-[1920px] overflow-x-hidden flex flex-col gap-2 pb-18"
     >
       <div
         onClick={() => {
@@ -31,7 +31,7 @@ export default function App() {
       </div>
       <img
         src={wallpaper}
-        className="opacity-20 fixed max-w-screen select-none -z-999"
+        className="opacity-20 fixed min-w-full select-none -z-999"
         draggable="false"
       />
       <div className="mx-auto mt-16 w-100 h-25 bg-black opacity-66 flex flex-col rounded-xl shadow-black shadow-md">
